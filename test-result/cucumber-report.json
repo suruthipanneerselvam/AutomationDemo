@@ -1,0 +1,63 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "automation-testing-practice;common-steps",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Common steps",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 378800400
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 4006357300
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I launch the automation testing practice application",
+            "match": {
+              "location": "PlaywrightAutomationCode\\StepDefinition\\AutomationPracticeSteps.ts:6"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 1078949099
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I enter dates",
+            "match": {
+              "location": "PlaywrightAutomationCode\\StepDefinition\\AutomationPracticeSteps.ts:12"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@automationTesting",
+            "line": 2
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "automation-testing-practice",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Automation Testing Practice",
+    "tags": [],
+    "uri": "PlaywrightAutomationCode\\FeatureFiles\\AutomationPractice.feature"
+  }
+]

@@ -1,0 +1,16 @@
+{
+    "OrangeHRM":{
+        "url" : "https://opensource-demo.orangehrmlive.com/",
+        "username" : "Admin",
+        "password" : "admin123"
+    },
+
+    "AutomationTestPractice":{
+        "name" : "suruthi",
+        "mail" : "suruthi@gmail.com",
+        "url" : "https://testautomationpractice.blogspot.com/"    
+    },
+     "Demo":{
+        "url" : "https://the-internet.herokuapp.com/nested_frames"
+    }
+}
