@@ -17,7 +17,7 @@
     "@cucumber/cucumber": "^13.3.0",
     "@cucumber/messages": "^34.2.1",
     "@playwright/test": "^1.63.0",
-    "@types/node": "^26.6.2",
+    "@types/node": "^26.6.5",
     "allure-commandline": "^2.46.1",
     "allure-cucumberjs": "^3.13.0",
     "allure-js-commons": "^3.13.0",
