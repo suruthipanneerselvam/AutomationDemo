@@ -8,11 +8,13 @@ let browser: Browser;
 
 setDefaultTimeout(60000)
 
+const isCI = !!process.env.CI;
+
 BeforeAll(async function () {
     browser = await chromium.launch({
-        headless: false,
-        args: ['--start-maximized']
-    })
+        headless: isCI,
+        args: isCI ? [] : ['--start-maximized']
+    });
     console.log("BeforeAll")
 });
 
