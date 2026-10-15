@@ -1,5 +1,5 @@
-import { BeforeAll,Before,AfterAll,After, setDefaultTimeout } from "@cucumber/cucumber";
-import { Browser,BrowserContext,Page,chromium, firefox } from "playwright/test";
+import { BeforeAll, Before, AfterAll, After, setDefaultTimeout, Status } from "@cucumber/cucumber";
+import { Browser, BrowserContext, Page, chromium, firefox } from "playwright/test";
 import { pageFixture } from "./PageFixture";
 
 let page: Page;
@@ -8,35 +8,44 @@ let browser: Browser;
 
 setDefaultTimeout(60000)
 
-BeforeAll(async function() {
-browser = await chromium.launch({
-    headless:false,
-    args:['--start-maximized']
-})
-console.log("BeforeAll")
+BeforeAll(async function () {
+    browser = await chromium.launch({
+        headless: false,
+        args: ['--start-maximized']
+    })
+    console.log("BeforeAll")
 });
 
-Before(async function(){
+Before(async function () {
     context = await browser.newContext({
-    recordVideo:{dir:'test-result/videos'},
-    viewport:null
-})
-await context.tracing.start({
-    snapshots:true,
-    screenshots:true
-    
-})
-page = await context.newPage()
-pageFixture.page = page
+        //recordVideo: { dir: 'test-result/videos' },
+        viewport: null
+    })
+    await context.tracing.start({
+        snapshots: true,
+        screenshots: true,
+        sources: true
 
-console.log("Before")
+    })
+    page = await context.newPage()
+    pageFixture.page = page
+
+    console.log("Before")
 });
-After(async function(){
-        await context.tracing.stop({path:'./test-result/trace/first.zip'})
+After(async function ({ result, pickle }) {
+    const name = pickle.name.replace(/\W+/g, "_")
+    if (result?.status === Status.FAILED) {
+        await context.tracing.stop({ path: './test-result/trace/${name}.zip' })
+        await pageFixture.page.screenshot({ fullPage: true })
+        this.attach(name, "image/png")
+    }
+    else {
+        await context.tracing.stop();
+    }
     await pageFixture.page.close()
 
     await context.close()
-})
-AfterAll(async function(){
+});
+AfterAll(async function () {
     await browser.close()
 })

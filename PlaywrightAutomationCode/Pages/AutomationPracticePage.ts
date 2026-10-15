@@ -17,7 +17,9 @@ this.page = page
         drop : '//div[@id="droppable"]',
         dropdownidxpath : '#colors',
         sundayxpath : '#sunday',
-        fieldonebox : '#field1'
+        fieldonebox : '#field1',
+        chooseSingleFile:'//input[@id="singleFileInput"]',
+        uploadSingleFile:'//button[text()="Upload Single File"]'
         
     }
 async launchURL(){
@@ -53,5 +55,9 @@ await this.page.locator(this.elements.fieldonebox).press('Control+A')
 await this.page.keyboard.press('Delete')
 await this.page.keyboard.up('Control')
 await this.page.locator(this.elements.fieldonebox).fill('CTS')
+}
+async uploadfiles(){
+await this.page.locator(this.elements.chooseSingleFile).setInputFiles('PlaywrightAutomationCodeScreenshotsdate.png')
+await this.page.locator(this.elements.uploadSingleFile).click()
 }
 }

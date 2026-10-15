@@ -14,3 +14,6 @@ await ap.dateSelection()
 await ap.draganddrop()
 await ap.dropdown()
 })
+When('I upload files',async function(){
+    await ap.uploadfiles()
+})
